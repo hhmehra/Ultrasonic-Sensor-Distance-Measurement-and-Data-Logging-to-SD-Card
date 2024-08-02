@@ -1,3 +1,31 @@
+/*
+  Project: Ultrasonic Sensor Distance Measurement and Data Logging to SD Card
+  Description: This project measures the distance to an object using an ultrasonic sensor and logs the data to an SD card in CSV format.
+               The measurements are taken at regular intervals and stored in multiple files, each representing a 10-second recording segment.
+               The total recording duration is set to 1 minute.
+
+  How It Works:
+  - The Arduino sends an ultrasonic pulse using the trigger pin of the ultrasonic sensor.
+  - The echo pin of the sensor receives the reflected pulse and calculates the duration it took for the pulse to return.
+  - This duration is then used to calculate the distance to the object.
+  - The distance measurements are recorded along with the elapsed time into CSV files on an SD card.
+  - A new CSV file is created every 10 seconds to segment the data.
+
+  Hardware Connections:
+  - Ultrasonic Sensor:
+    - VCC to 5V on Arduino Mega 2560
+    - GND to GND on Arduino Mega 2560
+    - Trig pin to digital pin 9 on Arduino Mega 2560
+    - Echo pin to digital pin 10 on Arduino Mega 2560
+  - SD Card Module:
+    - VCC to 5V on Arduino Mega 2560
+    - GND to GND on Arduino Mega 2560
+    - CS (Chip Select) to pin 53 on Arduino Mega 2560
+    - MOSI to pin 51 on Arduino Mega 2560
+    - MISO to pin 50 on Arduino Mega 2560
+    - SCK to pin 52 on Arduino Mega 2560
+*/
+
 #include <SPI.h> // SPI library for communication with the SD card
 #include <SD.h>  // SD library to handle SD card operations
 
@@ -128,3 +156,4 @@ void createNewFile() {
     Serial.println("Error creating file"); // Print error message if file cannot be created
   }
 }
+
